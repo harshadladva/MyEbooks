@@ -1,14 +1,146 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+  <ion-navbar color="primary">
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <ion-icon padding class="menu" name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title class="toolbar-title" padding-top>Home</ion-title>
+    <ion-buttons right>
+      <button ion-button>
+        <ion-icon class="cart" name="md-search"></ion-icon>
+        <ion-icon class="cart" name="md-cart" padding></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+
+  <ion-slides class="slider" slidesPerView="1.3">
+    <ion-slide *ngFor="let img of slider">
+      <ion-card class="slider_card">
+        <img src="{{img.imageUrl}}" class="slider_image" />
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+  <ion-card>
+    <ion-card-header>
+      Our Products
+    </ion-card-header>
+    <ion-card-content>
+      <ion-slides slidesPerView="3">
+        <ion-slide *ngFor="let img of items">
+          <img src="{{img.icon}}" class="image_card" />
+          <p>{{img.name}}</p>
+        </ion-slide>
+      </ion-slides>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-slides *ngIf="slider && slider.length" class="adcard" autoplay="3000" speed="500" slidesPerView="1" pager="true">
+    <ion-slide *ngFor="let img of slider">
+      <img src="{{img.imageUrl}}" class="adcard" imageViewer />
+    </ion-slide>
+  </ion-slides>
+
+  <ion-card>
+    <ion-card-header>
+      Best In Bethak
+      <!-- <div right> -->
+      <button (click)="SecondDetailPage()" style="float:right" clear color="secondary" ion-button>View More</button>
+      <!-- </div> -->
+    </ion-card-header>
+    <ion-card-content>
+      <ion-slides slidesPerView="2.5">
+        <ion-slide *ngFor="let img of bethak">
+          <img src="{{img.imageUrl}}" class="product_image" />
+          <p class="name" text-center>{{img.name}}</p>
+          <p class="price">{{img.originalPrice}}</p>
+          <p class="price_discount">{{img.discountPrice}}</p>
+        </ion-slide>
+      </ion-slides>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Best In Sofa
+      <!-- <div right> -->
+      <button (click)="SecondDetailPage()" style="float:right" clear color="secondary" ion-button>View More</button>
+      <!-- </div> -->
+    </ion-card-header>
+    <ion-card-content>
+      <ion-slides slidesPerView="2.5">
+        <ion-slide *ngFor="let img of bethak">
+          <img src="{{img.imageUrl}}" class="product_image" />
+          <p class="name" text-center>{{img.name}}</p>
+          <p class="price">{{img.originalPrice}}</p>
+          <p class="price_discount">{{img.discountPrice}}</p>
+        </ion-slide>
+      </ion-slides>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- 
+    <ion-slides class="slider" slidesPerView="1.3" autoplay="3000" speed="500">
+      <ion-slide *ngFor="let img of images" padding>
+        <ion-card class="slider_adcard">
+          <img src="{{img}}" class="slider_image" />
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+ -->
+
+  <div class="discount_box" padding>
+    <h4 text-center padding-left>40% Discount</h4>
+    <!-- <ion-card padding> -->
+    <ion-row wrap>
+      <ion-col col-6 *ngFor="let images of slider">
+        <img src="{{images.imageUrl}}" />
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <ion-card>
+    <ion-card-header>
+      Best In Door
+      <!-- <div right> -->
+      <button (click)="SecondDetailPage()" style="float:right" clear color="secondary" ion-button>View More</button>
+      <!-- </div> -->
+    </ion-card-header>
+    <ion-card-content>
+      <ion-slides slidesPerView="2.5">
+        <ion-slide *ngFor="let img of bethak">
+          <img src="{{img.imageUrl}}" class="product_image" />
+          <p class="name" text-center>{{img.name}}</p>
+          <p class="price">{{img.originalPrice}}</p>
+          <p class="price_discount">{{img.discountPrice}}</p>
+        </ion-slide>
+      </ion-slides>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Best In Temple
+      <button (click)="SecondDetailPage()" style="float:right" clear color="secondary" ion-button>View More</button>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-slides slidesPerView="2.5">
+        <ion-slide *ngFor="let img of bethak">
+          <img src="{{img.imageUrl}}" class="product_image" />
+          <p class="name" text-center>{{img.name}}</p>
+          <p class="price">{{img.originalPrice}}</p>
+          <p class="price_discount">{{img.discountPrice}}</p>
+        </ion-slide>
+      </ion-slides>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- <ion-card class="adcard"> -->
+  <!-- <img class="adcard" src="{{image}}" class="adcard" /> -->
+  <!-- </ion-card> -->
+
+
 </ion-content>
