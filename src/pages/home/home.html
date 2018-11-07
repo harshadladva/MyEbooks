@@ -5,7 +5,7 @@
         <ion-icon padding class="menu" name="menu"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title class="toolbar-title" padding-top>Home</ion-title>
+    <ion-title class="toolbar-title" padding-top>HOME</ion-title>
     <ion-buttons right>
       <button ion-button>
         <ion-icon class="cart" name="md-search"></ion-icon>
@@ -16,10 +16,9 @@
 </ion-header>
 
 <ion-content>
-
   <ion-slides class="slider" slidesPerView="1.3">
-    <ion-slide *ngFor="let img of slider">
-      <ion-card class="slider_card">
+    <ion-slide *ngFor="let img of slider;let i = index;">
+      <ion-card (click)="singleProductDetail('Bethak',img.productId)" class="slider_card">
         <img src="{{img.imageUrl}}" class="slider_image" />
       </ion-card>
     </ion-slide>
@@ -29,9 +28,9 @@
       Our Products
     </ion-card-header>
     <ion-card-content>
-      <ion-slides slidesPerView="3">
-        <ion-slide *ngFor="let img of items">
-          <img src="{{img.icon}}" class="image_card" />
+      <ion-slides slidesPerView="2.5">
+        <ion-slide *ngFor="let img of items;let i = index;">
+          <img  src="{{img.icon}}" (click)="nextSliderView(i)" class="image_card" />
           <p>{{img.name}}</p>
         </ion-slide>
       </ion-slides>
@@ -46,18 +45,18 @@
 
   <ion-card>
     <ion-card-header>
-      Best In Bethak
+      Best In Article
       <!-- <div right> -->
-      <button (click)="SecondDetailPage()" style="float:right" clear color="secondary" ion-button>View More</button>
+      <button (click)="SecondDetailPage('Article')" style="float:right" clear color="secondary" ion-button>View More</button>
       <!-- </div> -->
     </ion-card-header>
     <ion-card-content>
       <ion-slides slidesPerView="2.5">
-        <ion-slide *ngFor="let img of bethak">
-          <img src="{{img.imageUrl}}" class="product_image" />
+        <ion-slide *ngFor="let img of article;let i = index;">
+          <img src="{{img.imageUrl}}" (click)="singleProductDetail('Article',i)" class="product_image" />
           <p class="name" text-center>{{img.name}}</p>
-          <p class="price">{{img.originalPrice}}</p>
-          <p class="price_discount">{{img.discountPrice}}</p>
+          <p class="price" text-center>{{img.originalPrice}}</p>
+          <p class="price_discount" text-center>{{img.discountPrice}}</p>
         </ion-slide>
       </ion-slides>
     </ion-card-content>
@@ -65,15 +64,15 @@
 
   <ion-card>
     <ion-card-header>
-      Best In Sofa
+      Best In Bed
       <!-- <div right> -->
-      <button (click)="SecondDetailPage()" style="float:right" clear color="secondary" ion-button>View More</button>
+      <button (click)="SecondDetailPage('Bed')"  style="float:right" clear color="secondary" ion-button>View More</button>
       <!-- </div> -->
     </ion-card-header>
     <ion-card-content>
       <ion-slides slidesPerView="2.5">
-        <ion-slide *ngFor="let img of bethak">
-          <img src="{{img.imageUrl}}" class="product_image" />
+        <ion-slide *ngFor="let img of bed;let i = index;">
+          <img src="{{img.imageUrl}}" (click)="singleProductDetail('Bed',i)" class="product_image" />
           <p class="name" text-center>{{img.name}}</p>
           <p class="price">{{img.originalPrice}}</p>
           <p class="price_discount">{{img.discountPrice}}</p>
@@ -93,26 +92,26 @@
  -->
 
   <div class="discount_box" padding>
-    <h4 text-center padding-left>40% Discount</h4>
+    <h4 text-center padding-left>10% or More Discount Products</h4>
     <!-- <ion-card padding> -->
-    <ion-row wrap>
-      <ion-col col-6 *ngFor="let images of slider">
-        <img src="{{images.imageUrl}}" />
+    <ion-row class="discount_images" wrap>
+      <ion-col col-6 *ngFor="let images of discount_10">
+        <img class="discount_image" src="{{images.imageUrl}}" />
       </ion-col>
     </ion-row>
   </div>
 
   <ion-card>
     <ion-card-header>
-      Best In Door
+      Best In Bethak
       <!-- <div right> -->
-      <button (click)="SecondDetailPage()" style="float:right" clear color="secondary" ion-button>View More</button>
+      <button (click)="SecondDetailPage('Bethak')" style="float:right" clear color="secondary" ion-button>View More</button>
       <!-- </div> -->
     </ion-card-header>
     <ion-card-content>
       <ion-slides slidesPerView="2.5">
-        <ion-slide *ngFor="let img of bethak">
-          <img src="{{img.imageUrl}}" class="product_image" />
+        <ion-slide *ngFor="let img of bethak;let i = index;">
+          <img src="{{img.imageUrl}}" (click)="singleProductDetail('Bethak',i)" class="product_image" />
           <p class="name" text-center>{{img.name}}</p>
           <p class="price">{{img.originalPrice}}</p>
           <p class="price_discount">{{img.discountPrice}}</p>
@@ -123,13 +122,13 @@
 
   <ion-card>
     <ion-card-header>
-      Best In Temple
-      <button (click)="SecondDetailPage()" style="float:right" clear color="secondary" ion-button>View More</button>
+      Best In Chairs
+      <button (click)="SecondDetailPage('Chairs')"  style="float:right" clear color="secondary" ion-button>View More</button>
     </ion-card-header>
     <ion-card-content>
       <ion-slides slidesPerView="2.5">
-        <ion-slide *ngFor="let img of bethak">
-          <img src="{{img.imageUrl}}" class="product_image" />
+        <ion-slide *ngFor="let img of chairs;let i = index;">
+          <img src="{{img.imageUrl}}" (click)="singleProductDetail('Chairs',i)" class="product_image" />
           <p class="name" text-center>{{img.name}}</p>
           <p class="price">{{img.originalPrice}}</p>
           <p class="price_discount">{{img.discountPrice}}</p>
@@ -138,9 +137,42 @@
     </ion-card-content>
   </ion-card>
 
-  <!-- <ion-card class="adcard"> -->
-  <!-- <img class="adcard" src="{{image}}" class="adcard" /> -->
-  <!-- </ion-card> -->
+  <ion-card>
+    <img src="{{image}}"  class="single_image"/>
+    <h5 text-center padding>Most Beautiful Products</h5>
+  </ion-card>
 
+  <ion-card>
+      <ion-card-header>
+        Best In Dining Table
+        <button (click)="SecondDetailPage('Dining Tables')"  style="float:right" clear color="secondary" ion-button>View More</button>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-slides slidesPerView="2.5">
+          <ion-slide *ngFor="let img of table;let i = index;">
+            <img src="{{img.imageUrl}}" (click)="singleProductDetail('Dining Tables',i)" class="product_image" />
+            <p class="name" text-center>{{img.name}}</p>
+            <p class="price">{{img.originalPrice}}</p>
+            <p class="price_discount">{{img.discountPrice}}</p>
+          </ion-slide>
+        </ion-slides>
+      </ion-card-content>
+    </ion-card>
 
+    <ion-card>
+        <ion-card-header>
+          Best In Door
+          <button (click)="SecondDetailPage('Door')"  style="float:right" clear color="secondary" ion-button>View More</button>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-slides slidesPerView="2.5">
+            <ion-slide *ngFor="let img of door;let i = index;">
+              <img src="{{img.imageUrl}}" (click)="singleProductDetail('Door',i)" class="product_image" />
+              <p class="name" text-center>{{img.name}}</p>
+              <p class="price">{{img.originalPrice}}</p>
+              <p class="price_discount">{{img.discountPrice}}</p>
+            </ion-slide>
+          </ion-slides>
+        </ion-card-content>
+      </ion-card>
 </ion-content>

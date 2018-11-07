@@ -10,9 +10,11 @@ page-bethak {
       height: 64px;
     }
 
-    // .menu {
-    //   float: left;
-    // }
+    .box_bed{
+      background: #fff;
+      padding-top: 4px;
+      border-top: 1px solid #ddd;
+    }
 
     .cart {
       font-size: 20px;
@@ -32,9 +34,7 @@ page-bethak {
     }
 
     .toolbar-title-ios {
-      // width: 85%;
       padding-top: 12px;
-      // margin-left: 20px;
     }
 
     .slider {
@@ -56,8 +56,16 @@ page-bethak {
       box-shadow: 3px;
     }
 
-    .discount_box{
+    .discount_box {
       background: #fff;
+    }
+
+    .discount_image{
+      height: 130px;
+    }
+
+    .discount_images{
+      height: 300px;
     }
 
     .single_image {

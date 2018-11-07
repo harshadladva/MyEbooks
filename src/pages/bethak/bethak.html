@@ -13,7 +13,7 @@
         <ion-icon padding class="menu" name="menu"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title class="toolbar-title" padding-top>Bethak</ion-title>
+    <ion-title class="toolbar-title" padding-top>PRODUCTS</ion-title>
     <ion-buttons right>
       <button ion-button>
         <ion-icon class="cart" name="md-search"></ion-icon>
@@ -25,29 +25,32 @@
 <!-- </ion-header> -->
 
 <ion-content>
-  <ion-card>
+  <ion-card (click)="secondPage('Bethak')">
     <img src="{{image}}" class="single_image" />
     <h5 text-center padding>Most Beautiful Bethaks</h5>
   </ion-card>
 
   <div class="discount_box" padding>
-    <h4 text-center padding-left>40% Discount</h4>
-    <!-- <ion-card padding> -->
-    <ion-row wrap>
-      <ion-col col-6 *ngFor="let images of slider">
-        <img src="{{images.imageUrl}}" />
-      </ion-col>
-    </ion-row>
-  </div>
+      <h4 text-center padding-left>10% or More Discount Bethaks</h4>
+      <!-- <ion-card padding> -->
+      <ion-row class="discount_images" wrap>
+        <ion-col col-6 *ngFor="let images of discount_10">
+          <img class="discount_image" src="{{images.imageUrl}}" />
+        </ion-col>.
+      </ion-row>
+    </div>
 
+    <div class="box_bed">
+    <h5 padding-left text-center>Best {{ bed.length % 10}} Bed of the year</h5>
   <!-- <h5 text-center>Best Seller Products</h5> -->
-  <ion-slides *ngIf="slider && slider.length" autoplay="3000" speed="500" class="slider" slidesPerView="1.3">
-    <ion-slide *ngFor="let img of slider">
-      <ion-card class="slider_card">
+  <ion-slides *ngIf="bed && bed.length" autoplay="3000" speed="500" class="slider" slidesPerView="1.3">
+    <ion-slide *ngFor="let img of bed;let i = index;">
+      <ion-card (click)="singleProductDetail('Bed',i)" class="slider_card">
         <img src="{{img.imageUrl}}" class="slider_image" />
       </ion-card>
     </ion-slide>
   </ion-slides>
+</div>
 
   <!-- <ion-tabs>
     <ion-tab [root]="tab1Root" tabTitle="More Discount Products"></ion-tab>

@@ -18,16 +18,19 @@ export class MenuPage {
   @ViewChild(Nav) nav: Nav;
 
   rootPage:string="HomePage";
-
+  image:string;
   pages: Array<{ title: string, component: any, icon: string }>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.pages = [
       { title: "HOME", component: "HomePage", icon: "home" },
-      { title: "NEW ARRIVAL", component: "BethakPage", icon: "paper-plane" },
-      { title: "COATS & JACKETS", component: "HomePage", icon: "shirt" }
+      { title: "PRODUCTS", component: "BethakPage", icon: "paper-plane" },
+      { title: "ADD TO CART", component: "HomePage", icon: "shirt" }
     ]
+    
+    this.image = "https://www.androidheadlines.com/wp-content/uploads/2014/10/Chrome-Wallpaper.jpg";
   }
+
 
   openPage(page) {
     // Reset the content nav to have just this page
